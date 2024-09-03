@@ -1,0 +1,18 @@
+; No Exit to Main Menu 1.4 - Stentorious
+if IsModLoaded "Main And Pause Menus Overhaul.esm" != 1																																										; Check if MAPMO is installed
+
+	SetOnMenuClickEventHandler (begin function {int iMenuID, int iTileID, string_var sTileName}																																; On Pause Menu button press
+		CallAfterFrames 0 (begin function {}																																												; Call next frame
+			if eval GetUIFloatAlt ("StartMenu\NOGLOW_BRANCH\confirm_container\" + (GetStringGameSetting sMainMenu) + "\visible") > -1																						; If exit button pressed
+				DispatchEventAlt "NoMainExit"																																												; Disable Main Menu button
+			endif
+		end) 1																																																				; Run in MenuMode
+	end) 1 "StartMenu\NOGLOW_BRANCH\main_container\lb_item_hotrect"																																							; Set UI tile for MenuClick event
+	
+	SetEventHandler "NoMainExit" (begin Function {}
+		SetUIFloatAlt ("StartMenu\NOGLOW_BRANCH\confirm_container\" + (GetStringGameSetting sCancel) + "\y") (GetUIFloatAlt ("StartMenu\NOGLOW_BRANCH\confirm_container\" + (GetStringGameSetting sExitGameAffirm) + "\y"))	; Shift Cancel button up
+		SetUIFloatAlt ("StartMenu\NOGLOW_BRANCH\confirm_container\" + (GetStringGameSetting sExitGameAffirm) + "\y") 0																										; Shift Exit Game button up
+		SetUIFloatAlt ("StartMenu\NOGLOW_BRANCH\confirm_container\" + (GetStringGameSetting sMainMenu) + "\visible") 0																										; Hide Main Menu button
+	end)
+	
+endif
