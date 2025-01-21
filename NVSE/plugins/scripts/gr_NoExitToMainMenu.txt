@@ -1,4 +1,4 @@
-; No Exit to Main Menu 1.4 - Stentorious
+; No Exit to Main Menu - Stentorious
 
 ; Only remove main menu option if MAPMO isn't installed, as it includes an identical feature
 if IsModLoaded "Main And Pause Menus Overhaul.esm" != 1
