@@ -1,5 +1,5 @@
 # No Exit to Main Menu
-<p align="center">
+<p align="left">
     <img height="200px" src="https://i.imgur.com/JhrfEGp.png">
 </p>
 
